@@ -1,0 +1,12 @@
+{
+  "name": "sparkaflame.twc3.extensions",
+  "version": "1.0.0",
+  "displayName": "Extensions for Tile World Creator 3",
+  "description": "Some actions to extend Tile World Creator 3's functionality.",
+  "unity": "2019.4",
+  "unityRelease": "37f1",
+  "keywords": [],
+  "author": {
+     "name": "SparkAflame @ GitHub"
+  }
+}
