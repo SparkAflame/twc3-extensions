@@ -41,12 +41,19 @@ namespace SparkAflame.TWC3.Extensions.Actions.Modifiers
    /// </summary>
    [ActionCategory( Category = ActionCategoryAttribute.CategoryTypes.Modifiers )]
    [ActionName( Name = "Overlap With" )]
-   public class OverlapWith : TWCBlueprintAction, ITWCAction
+   [Serializable]
+   public sealed class OverlapWith : TWCBlueprintAction, ITWCAction
    {
       private const float DefaultGuiHeight = 18.0f;
 
-      // ReSharper disable once MemberCanBePrivate.Global - must be public (yuk!) for TWC's serialisation.
-      public Guid OverlapLayer;
+
+      #region > > > > >   Exposed Fields   < < < < <
+
+      [SerializeField]
+      private Guid _overlapLayer;
+
+      #endregion
+
 
       private TWCGUILayout _guiLayout;
 
@@ -69,7 +76,7 @@ namespace SparkAflame.TWC3.Extensions.Actions.Modifiers
       {
          return new OverlapWith()
          {
-            OverlapLayer = this.OverlapLayer
+            _overlapLayer = this._overlapLayer
          };
       }
 
@@ -89,7 +96,7 @@ namespace SparkAflame.TWC3.Extensions.Actions.Modifiers
       /// </returns>
       public bool [ , ] Execute( bool [ , ] map, TileWorldCreator twc )
       {
-         bool [ , ] fromMap = twc.GetMapOutputFromBlueprintLayer( OverlapLayer );
+         bool [ , ] fromMap = twc.GetMapOutputFromBlueprintLayer( _overlapLayer );
 
          if ( null == fromMap )
          {
@@ -116,7 +123,7 @@ namespace SparkAflame.TWC3.Extensions.Actions.Modifiers
          using ( _guiLayout = new TWCGUILayout( rect ) )
          {
             string [] names     = EditorUtilities.GetAllGenerationLayerNames( asset );
-            string    layerName = asset.GetBlueprintLayerData( OverlapLayer )?.layerName;
+            string    layerName = asset.GetBlueprintLayerData( _overlapLayer )?.layerName;
 
             _guiLayout.Add();
 
@@ -151,7 +158,7 @@ namespace SparkAflame.TWC3.Extensions.Actions.Modifiers
 
          if ( d.Layer == 0 )
          {
-            OverlapLayer = d.Twc.twcAsset.mapBlueprintLayers [ d.SelectedIndex ].guid;
+            _overlapLayer = d.Twc.twcAsset.mapBlueprintLayers [ d.SelectedIndex ].guid;
          }
       }
 #endif

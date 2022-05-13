@@ -4,7 +4,7 @@ This is a Unity UPM repository containing extensions to DoorFortyFour's Tile Wor
 (http://www.tileworldcreator.com/).
 
 The repository contains ONLY my custom actions, Tile World Creator 3 (TWC3) itself
-is **NOT** included.  TWC3 may be purchased from Unity's Asset Store:
+is **NOT** included; it may be purchased from Unity's Asset Store:
 https://assetstore.unity.com/packages/tools/level-design/tileworldcreator-3-199383.
 
 Please note that:
@@ -16,7 +16,7 @@ Please note that:
 
 ## Licence
 
-MIT.  See [LICENCE](LICENSE).
+MIT.  See the [LICENSE](LICENSE).
 
 
 ## Installing
@@ -30,7 +30,7 @@ MIT.  See [LICENCE](LICENSE).
 
    (Option (i) installs the package read-only; option (ii) allows modification.)
 
-Nothing else is needed - TWC3 will auto-detect the extension.
+Nothing else is needed - TWC3 will auto-detect the extensions.
 
 
 # Custom Actions
@@ -50,8 +50,34 @@ that `Overlap With` works more like the built-in `Add` and `Subtract` modifiers 
 overlaps another, named blueprint layer with the current blueprint layer's map as it is when
 `Overlap With` is invoked.
 
+![Image: Example using Overlap With](./Docs%20Images/Overlap%20With.PNG)
+
 The motivation for this modifier is to make `Overlap` easier to use in the middle of an action stack.
 
+### Select By Rule
+
+This modifier is similar the built-in `Select` with a type of `Rule` but instead of having just
+two options for testing the corresponding map cell `Select By Rule` has three.  The rule visualisation
+is also changed.  The three options are:
+
+* The map cell must be occupied - represented by a green "Y" in a green box.
+* The map cell must be unoccupied - represented by a red "N" in a red box.
+* Ignore the map cell - we don't care whether it's occupied or unoccupied - represented by an empty
+  grey box.
+
+A new rule defaults to all cells being "N"; clicking a cell cycles from "N" -> "Y" -> Blank -> "N"
+... etc. (i.e. unoccupied -> occupied -> don't care -> unoccupied ... etc.).
+
+This version also adds the ability to try matching the rule when it is rotated by 90, 180, and 270
+degrees.  Each rotation is selectable individually or in any combination.
+
+![Image: Example Select By Rule that selects all cells having at least one outside edge.](./Docs%20Images/Select%20By%20Rule.PNG)
+
+Image: Example Select By Rule that selects all cells having at least one outside edge.
+
+The motivation for this is to (hopefully) simplify rule creation by removing the need to create 
+multiple rules to cover cases where the only difference is the presence or absence of an occupied
+map cell in a particular position, or the rule's orientation relative to the map.
 
 
 ## Notes
