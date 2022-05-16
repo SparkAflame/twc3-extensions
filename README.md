@@ -50,13 +50,14 @@ that `Overlap With` works more like the built-in `Add` and `Subtract` modifiers 
 overlaps another, named blueprint layer with the current blueprint layer's map as it is when
 `Overlap With` is invoked.
 
-![Image: Example using Overlap With](./Docs%20Images/Overlap%20With.PNG)
+![Image: Example using Overlap With](./Docs%20Images/Overlap%20With.png)
 
-The motivation for this modifier is to make `Overlap` easier to use in the middle of an action stack.
+The motivation for this modifier is to make `Overlap` easier to use in the middle of an action stack and
+thereby reduce the number of blueprint layers.
 
 ### Select By Rule
 
-This modifier is similar the built-in `Select` with a type of `Rule` but instead of having just
+This modifier is similar the built-in `Select` modifir with a type of `Rule` but instead of having just
 two options for testing the corresponding map cell `Select By Rule` has three.  The rule visualisation
 is also changed.  The three options are:
 
@@ -71,7 +72,7 @@ A new rule defaults to all cells being "N"; clicking a cell cycles from "N" -> "
 This version also adds the ability to try matching the rule when it is rotated by 90, 180, and 270
 degrees.  Each rotation is selectable individually or in any combination.
 
-![Image: Example Select By Rule that selects all cells having at least one outside edge.](./Docs%20Images/Select%20By%20Rule.PNG)
+![Image: Example Select By Rule that selects all cells having at least one outside edge.](./Docs%20Images/Select%20By%20Rule.png)
 
 Image: Example Select By Rule that selects all cells having at least one outside edge.
 
@@ -79,6 +80,17 @@ The motivation for this is to (hopefully) simplify rule creation by removing the
 multiple rules to cover cases where the only difference is the presence or absence of an occupied
 map cell in a particular position, or the rule's orientation relative to the map.
 
+### Subtract From
+
+This modifier is similar to the built-in `Substract` modifier but performs the calculation in reverse,
+i.e. the built-in `Subtract` subtracts another named blueprint layer from the current map while 
+`Subtract From` subtracts the current blueprint layer from another named layer.
+
+![Image: Example Select By Rule that selects all cells having at least one outside edge.](./Docs%20Images/Subtract%20From.png)
+
+The motivation for this modifier is subtraction (unlike addition) is not commutative (i.e., in general,
+A - B != B - A) so while `Subtract` provides A - B, `Subtract From` provides B - A (where A is the current
+map and B is the other named blueprint layer).
 
 ## Notes
 

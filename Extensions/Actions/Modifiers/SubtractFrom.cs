@@ -36,13 +36,14 @@ using UnityEngine;
 namespace SparkAflame.TWC3.Extensions.Actions.Modifiers
 {
    /// <summary>
-   ///   A Tile World Creator modifier action that overlaps (boolean AND) the current map with another named blueprint
-   ///   layer.
+   ///   A Tile World Creator modifier action that subtracts the current map from another named blueprint layer.  It is
+   ///   the opposite of the built-in "Subtract" modifier; if Subtract performs the operation A - B, Subtract from
+   ///   performs B - A.
    /// </summary>
    [ActionCategory( Category = ActionCategoryAttribute.CategoryTypes.Modifiers )]
-   [ActionName( Name = "Overlap With" )]
+   [ActionName( Name = "Subtract From" )]
    [Serializable]
-   public sealed class OverlapWith : TWCBlueprintAction, ITWCAction
+   public sealed class SubtractFrom : TWCBlueprintAction, ITWCAction
    {
       private const float DefaultGuiHeight = 18.0f;
 
@@ -73,7 +74,7 @@ namespace SparkAflame.TWC3.Extensions.Actions.Modifiers
       /// </returns>
       public ITWCAction Clone()
       {
-         return new OverlapWith()
+         return new SubtractFrom()
          {
             _overlapLayer = this._overlapLayer
          };
@@ -99,7 +100,7 @@ namespace SparkAflame.TWC3.Extensions.Actions.Modifiers
 
          if ( null == fromMap )
          {
-            Debug.LogWarning( "TileWorldCreator: modifier \"Overlap With\" - Blueprint layer is not assigned" );
+            Debug.LogWarning( "TileWorldCreator: modifier \"Subtract From\" - Blueprint layer is not assigned" );
 
             return map;
          }
@@ -108,7 +109,7 @@ namespace SparkAflame.TWC3.Extensions.Actions.Modifiers
          {
             for ( int y = 0; y < fromMap.GetLength( 1 ); y++ )
             {
-               map [ x, y ] &= fromMap [ x, y ];
+               map [ x, y ] = !map[x,y] && fromMap [ x, y ];
             }
          }
 
