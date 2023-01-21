@@ -1,15 +1,22 @@
 # Extensions for Tile World Creator 3
 
-This is a Unity UPM repository containing extensions to DoorFortyFour's Tile World Creator 3
-(http://www.tileworldcreator.com/).
+This is a Unity UPM repository containing extensions to Tile World Creator 3 by Giant Grey
+(formerly DoorFortyFour)(http://www.tileworldcreator.com/).
 
 The repository contains ONLY my custom actions, Tile World Creator 3 (TWC3) itself
 is **NOT** included; it may be purchased from Unity's Asset Store:
 https://assetstore.unity.com/packages/tools/level-design/tileworldcreator-3-199383.
 
+> :warning: Please note that you do not need this repository if you are using Tile
+> World Creator version 3.4.0 or later because these extensions have been incorporated
+> into the base software.  (Thank you Marc.)
+>
+> This repository will remain for posterity and for those who are unable to upgrade to
+> 3.4.0.
+
 Please note that:
 
-1. I am not the author of TWC3 nor am I affiliated with DoorFortyFour in any way, I'm just a customer.
+1. I am not the author of TWC3 nor am I affiliated with Giant Grey in any way, I'm just a customer.
 2. This repository will be of no use to you without TWC3.
 3. Minimum Unity version is the same as for TWC3.
 
